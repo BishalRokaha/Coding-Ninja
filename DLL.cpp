@@ -194,3 +194,28 @@ int main(){
     print(head);
     return 0;
 }
+
+
+//for reversing a doubly linked list.  (prev and next pointers are swapped .Nothing else)
+//concept is same as:- 
+// temp=first;
+//first=second;
+//second=temp;
+Node* reverseDLL(Node* head)
+{   
+    // Write your code here   
+    if(head==NULL || head->next==NULL){
+        return head;
+    }
+
+    Node* curr=head;
+    Node* last=NULL;
+    while(curr!=NULL){
+        last=curr->prev;
+        curr->prev=curr->next;
+        curr->next=last;
+
+        curr=curr->prev;
+    }
+    return last->prev;
+}
